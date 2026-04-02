@@ -16,20 +16,20 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-accent text-white px-7 py-3 rounded-full font-semibold
-           hover:bg-orange-600 transition-all duration-200 shadow-sm hover:shadow-md
+    @apply bg-primary text-white px-7 py-3 rounded-full font-semibold
+           hover:brightness-110 transition-all duration-200 shadow-sm
            active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-primary text-white px-7 py-3 rounded-full font-semibold
-           hover:bg-opacity-90 transition-all duration-200 shadow-sm hover:shadow-md
+    @apply bg-accent text-white px-7 py-3 rounded-full font-semibold
+           hover:brightness-110 transition-all duration-200 shadow-sm
            active:scale-95;
   }
 
   .btn-outline {
-    @apply border-2 border-primary text-primary px-7 py-3 rounded-full font-semibold
-           hover:bg-primary hover:text-white transition-all duration-200
+    @apply border-2 border-white text-white px-7 py-3 rounded-full font-semibold
+           hover:bg-white hover:text-primary transition-all duration-200
            active:scale-95;
   }
 
@@ -39,20 +39,45 @@
   }
 
   .product-card:hover {
-    @apply -translate-y-1 shadow-card-hover;
+    @apply -translate-y-2 shadow-card-hover;
   }
 
   .input-field {
     @apply w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50
-           focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent focus:bg-white
+           focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary focus:bg-white
            transition-all duration-200 text-dark placeholder-gray-400;
   }
 
   .section-title {
-    @apply font-heading text-3xl font-bold text-primary;
+    @apply font-heading text-3xl lg:text-4xl font-bold text-dark;
   }
 
   .section-subtitle {
-    @apply text-muted mt-2;
+    @apply text-muted mt-2 text-lg;
+  }
+
+  /* Scroll reveal animations */
+  .reveal {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .reveal-left {
+    @apply opacity-0 -translate-x-8 transition-all duration-700 ease-out;
+  }
+
+  .reveal-left.visible {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .reveal-right {
+    @apply opacity-0 translate-x-8 transition-all duration-700 ease-out;
+  }
+
+  .reveal-right.visible {
+    @apply opacity-100 translate-x-0;
   }
 }
