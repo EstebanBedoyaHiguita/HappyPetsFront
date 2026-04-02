@@ -26,8 +26,8 @@ function addToCart() {
 </script>
 
 <template>
-  <div class="product-card group">
-    <RouterLink :to="`/producto/${product._id}`" class="block">
+  <div class="product-card group flex flex-col h-full">
+    <RouterLink :to="`/producto/${product._id}`" class="block flex-shrink-0">
       <!-- Image container -->
       <div class="relative overflow-hidden aspect-square bg-gray-100">
         <img
@@ -55,18 +55,17 @@ function addToCart() {
     </RouterLink>
 
     <!-- Content -->
-    <div class="p-4">
-      <RouterLink :to="`/producto/${product._id}`">
+    <div class="p-4 flex flex-col flex-1">
+      <RouterLink :to="`/producto/${product._id}`" class="flex-1">
         <h3 class="font-semibold text-dark group-hover:text-accent transition-colors line-clamp-2 mb-2">
           {{ product.name }}
         </h3>
+        <p class="text-sm text-gray-500 line-clamp-2">
+          {{ product.description }}
+        </p>
       </RouterLink>
 
-      <p class="text-sm text-gray-500 mb-3 line-clamp-2">
-        {{ product.description }}
-      </p>
-
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
         <span class="text-xl font-bold text-primary">
           {{ formatPrice(product.price) }}
         </span>
