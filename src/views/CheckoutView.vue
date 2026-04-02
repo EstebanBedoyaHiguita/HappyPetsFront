@@ -1,5 +1,21 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
+
+const BOLD_SCRIPT_ID = 'bold-ui-kit';
+
+function loadBoldScript() {
+  if (document.getElementById(BOLD_SCRIPT_ID)) return;
+  const script = document.createElement('script');
+  script.id = BOLD_SCRIPT_ID;
+  script.src = 'https://bold.co/library/ui-kit.js?layout=vertical&type=slider';
+  document.body.appendChild(script);
+}
+
+function removeBoldScript() {
+  document.getElementById(BOLD_SCRIPT_ID)?.remove();
+}
+
+onUnmounted(removeBoldScript);
 import { useRouter, RouterLink } from 'vue-router';
 import { useCartStore } from '../stores/cart';
 import { useAuthStore } from '../stores/auth';
@@ -160,8 +176,9 @@ async function handleCheckout() {
       total: response.data.total,
     };
 
-    // Load PSE banks in parallel while transitioning
+    // Load PSE banks and Bold script in parallel while transitioning
     loadPSEBanks();
+    loadBoldScript();
     currentStep.value = 'payment';
   } catch (err: unknown) {
     const axiosError = err as { response?: { data?: { message?: string } } };
