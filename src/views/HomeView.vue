@@ -98,7 +98,7 @@ onUnmounted(() => {
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-8 reveal-left">
-              🐾 La tienda de mascotas que tu peludo merece
+              🐾 La alimentacion que tu peludo merece
             </div>
             <h1 class="font-heading text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 reveal-left" style="transition-delay: 100ms">
               Todo para tu
@@ -131,8 +131,8 @@ onUnmounted(() => {
 
               <!-- Badges flotantes con animación -->
               <div class="absolute -top-6 -right-6 bg-white rounded-2xl px-5 py-3 shadow-2xl animate-bounce" style="animation-duration: 3s">
-                <p class="text-xs text-muted font-medium">Envio gratis</p>
-                <p class="font-heading font-bold text-dark text-sm">desde $100.000</p>
+                <p class="text-xs text-muted font-medium">Alimentacion</p>
+                <p class="font-heading font-bold text-dark text-sm">100% Natural</p>
               </div>
               <div class="absolute -bottom-6 -left-6 bg-accent rounded-2xl px-5 py-3 shadow-2xl animate-bounce" style="animation-duration: 3.5s">
                 <p class="text-white text-xs font-medium">Entrega rapida</p>
@@ -154,12 +154,6 @@ onUnmounted(() => {
     <section class="bg-cream border-y border-orange-100 py-5">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center gap-8 text-sm text-muted font-medium">
-          <span class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-            </svg>
-            Envio a todo Colombia
-          </span>
           <span class="flex items-center gap-2">
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
@@ -264,22 +258,39 @@ onUnmounted(() => {
     <section class="py-20 bg-primary relative overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.05)_0%,_transparent_70%)]"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div class="reveal" style="transition-delay: 0ms">
-            <p class="font-heading text-4xl font-bold text-white mb-2">500+</p>
-            <p class="text-white/60 text-sm font-medium uppercase tracking-wider">Productos</p>
-          </div>
-          <div class="reveal" style="transition-delay: 100ms">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+          <!-- Stat 1 -->
+          <div class="reveal text-center" style="transition-delay: 0ms">
             <p class="font-heading text-4xl font-bold text-white mb-2">1.200+</p>
             <p class="text-white/60 text-sm font-medium uppercase tracking-wider">Clientes felices</p>
           </div>
-          <div class="reveal" style="transition-delay: 200ms">
-            <p class="font-heading text-4xl font-bold text-white mb-2">32</p>
-            <p class="text-white/60 text-sm font-medium uppercase tracking-wider">Departamentos</p>
-          </div>
-          <div class="reveal" style="transition-delay: 300ms">
+          <!-- Stat 2 -->
+          <div class="reveal text-center" style="transition-delay: 100ms">
             <p class="font-heading text-4xl font-bold text-white mb-2">4.9★</p>
             <p class="text-white/60 text-sm font-medium uppercase tracking-wider">Calificacion</p>
+          </div>
+          <!-- Ingredientes naturales -->
+          <div class="reveal col-span-2 flex items-center justify-center gap-4" style="transition-delay: 200ms">
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-4xl">🥩</span>
+              <p class="text-white/50 text-xs">Carne</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-4xl">🥦</span>
+              <p class="text-white/50 text-xs">Verduras</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-4xl">🥕</span>
+              <p class="text-white/50 text-xs">Vegetales</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-4xl">🐟</span>
+              <p class="text-white/50 text-xs">Pescado</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-4xl">🫐</span>
+              <p class="text-white/50 text-xs">Frutas</p>
+            </div>
           </div>
         </div>
       </div>
