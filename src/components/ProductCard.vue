@@ -26,7 +26,7 @@ function addToCart() {
 </script>
 
 <template>
-  <div class="product-card group flex flex-col h-full">
+  <div class="product-card group flex flex-col h-full w-full">
     <RouterLink :to="`/producto/${product._id}`" class="block flex-shrink-0">
       <!-- Image container -->
       <div class="relative overflow-hidden aspect-square bg-gray-100">

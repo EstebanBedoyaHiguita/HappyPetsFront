@@ -241,7 +241,7 @@ onUnmounted(() => {
           <div
             v-for="(product, i) in featuredProducts"
             :key="product._id"
-            class="reveal flex"
+            class="reveal flex w-full"
             :style="`transition-delay: ${i * 100}ms`"
           >
             <ProductCard :product="product" />
@@ -330,7 +330,7 @@ onUnmounted(() => {
           <div
             v-for="(product, i) in bestSellers"
             :key="product._id"
-            class="reveal flex"
+            class="reveal flex w-full"
             :style="`transition-delay: ${i * 100}ms`"
           >
             <ProductCard :product="product" />
