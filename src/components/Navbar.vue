@@ -17,100 +17,97 @@ const navLinks = [
 </script>
 
 <template>
-  <nav class="bg-primary shadow-lg sticky top-0 z-50">
+  <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
+
         <!-- Logo -->
         <div class="flex items-center">
-          <RouterLink to="/" class="flex items-center space-x-2">
-            <span class="text-2xl">🐾</span>
-            <span class="text-xl font-bold text-white">Happy Pets</span>
+          <RouterLink to="/" class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+              <span class="text-lg leading-none">🐾</span>
+            </div>
+            <span class="text-xl font-heading font-bold text-primary">Happy Pets</span>
           </RouterLink>
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-8">
+        <div class="hidden md:flex items-center gap-1">
           <RouterLink
             v-for="link in navLinks"
             :key="link.to"
             :to="link.to"
-            class="text-gray-300 hover:text-secondary transition-colors duration-200 font-medium"
-            active-class="text-secondary"
+            class="px-4 py-2 rounded-lg text-muted hover:text-primary hover:bg-gray-50 transition-all duration-200 font-medium text-sm"
+            active-class="text-primary bg-secondary font-semibold"
           >
             {{ link.name }}
           </RouterLink>
         </div>
 
         <!-- Right side -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center gap-3">
+
           <!-- Cart button -->
           <button
             @click="cartStore.toggleCart"
-            class="relative text-gray-300 hover:text-secondary transition-colors"
+            class="relative p-2 rounded-lg text-muted hover:text-primary hover:bg-gray-50 transition-all"
           >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
             <span
               v-if="cartStore.itemCount > 0"
-              class="absolute -top-2 -right-2 bg-secondary text-primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+              class="absolute -top-1 -right-1 bg-accent text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none"
             >
               {{ cartStore.itemCount }}
             </span>
           </button>
 
           <!-- Auth buttons -->
-          <div v-if="!authStore.isAuthenticated" class="hidden md:flex items-center space-x-3">
+          <div v-if="!authStore.isAuthenticated" class="hidden md:flex items-center gap-2">
             <RouterLink
               to="/login"
-              class="text-gray-300 hover:text-secondary transition-colors font-medium"
+              class="px-4 py-2 text-sm text-muted hover:text-primary transition-colors font-medium"
             >
               Iniciar sesion
             </RouterLink>
             <RouterLink
               to="/registro"
-              class="bg-secondary text-primary px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors"
+              class="btn-primary !py-2 !px-5 !text-sm"
             >
               Registrarse
             </RouterLink>
           </div>
 
           <!-- User menu -->
-          <div v-else class="hidden md:flex items-center space-x-3">
+          <div v-else class="hidden md:flex items-center gap-2">
             <RouterLink
               v-if="authStore.canManageProducts"
               to="/admin"
-              class="text-gray-300 hover:text-secondary transition-colors font-medium"
+              class="px-4 py-2 text-sm text-muted hover:text-primary hover:bg-gray-50 rounded-lg transition-all font-medium"
             >
               Admin
             </RouterLink>
             <RouterLink
               to="/perfil"
-              class="text-gray-300 hover:text-secondary transition-colors font-medium"
+              class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50 transition-all"
             >
-              {{ authStore.user?.name }}
+              <div class="w-7 h-7 bg-primary rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">
+                  {{ authStore.user?.name?.charAt(0).toUpperCase() }}
+                </span>
+              </div>
+              <span class="text-sm font-medium text-dark">{{ authStore.user?.name?.split(' ')[0] }}</span>
             </RouterLink>
             <button
               @click="authStore.logout"
-              class="text-gray-300 hover:text-secondary transition-colors"
+              class="p-2 rounded-lg text-muted hover:text-error hover:bg-red-50 transition-all"
+              title="Cerrar sesion"
             >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
             </button>
           </div>
@@ -118,23 +115,11 @@ const navLinks = [
           <!-- Mobile menu button -->
           <button
             @click="isMobileMenuOpen = !isMobileMenuOpen"
-            class="md:hidden text-gray-300 hover:text-secondary"
+            class="md:hidden p-2 rounded-lg text-muted hover:text-primary hover:bg-gray-50 transition-all"
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                v-if="!isMobileMenuOpen"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-              <path
-                v-else
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path v-if="!isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
@@ -142,52 +127,55 @@ const navLinks = [
     </div>
 
     <!-- Mobile menu -->
-    <div v-show="isMobileMenuOpen" class="md:hidden bg-primary border-t border-gray-700">
-      <div class="px-4 py-3 space-y-3">
+    <div v-show="isMobileMenuOpen" class="md:hidden border-t border-gray-100 bg-white">
+      <div class="px-4 py-4 space-y-1">
         <RouterLink
           v-for="link in navLinks"
           :key="link.to"
           :to="link.to"
-          class="block text-gray-300 hover:text-secondary font-medium"
+          class="block px-4 py-2.5 rounded-xl text-muted hover:text-primary hover:bg-gray-50 font-medium transition-all"
+          active-class="text-primary bg-secondary font-semibold"
           @click="isMobileMenuOpen = false"
         >
           {{ link.name }}
         </RouterLink>
-        <div v-if="!authStore.isAuthenticated" class="pt-3 border-t border-gray-700 space-y-3">
+
+        <div v-if="!authStore.isAuthenticated" class="pt-3 border-t border-gray-100 space-y-1">
           <RouterLink
             to="/login"
-            class="block text-gray-300 hover:text-secondary font-medium"
+            class="block px-4 py-2.5 rounded-xl text-muted hover:text-primary hover:bg-gray-50 font-medium transition-all"
             @click="isMobileMenuOpen = false"
           >
             Iniciar sesion
           </RouterLink>
           <RouterLink
             to="/registro"
-            class="block text-secondary font-medium"
+            class="block px-4 py-2.5 rounded-xl bg-accent text-white font-semibold text-center transition-all hover:bg-orange-600"
             @click="isMobileMenuOpen = false"
           >
             Registrarse
           </RouterLink>
         </div>
-        <div v-else class="pt-3 border-t border-gray-700 space-y-3">
+
+        <div v-else class="pt-3 border-t border-gray-100 space-y-1">
           <RouterLink
             v-if="authStore.canManageProducts"
             to="/admin"
-            class="block text-gray-300 hover:text-secondary font-medium"
+            class="block px-4 py-2.5 rounded-xl text-muted hover:text-primary hover:bg-gray-50 font-medium transition-all"
             @click="isMobileMenuOpen = false"
           >
             Panel Admin
           </RouterLink>
           <RouterLink
             to="/perfil"
-            class="block text-gray-300 hover:text-secondary font-medium"
+            class="block px-4 py-2.5 rounded-xl text-muted hover:text-primary hover:bg-gray-50 font-medium transition-all"
             @click="isMobileMenuOpen = false"
           >
             Mi Perfil
           </RouterLink>
           <button
             @click="authStore.logout(); isMobileMenuOpen = false"
-            class="block text-gray-300 hover:text-secondary font-medium"
+            class="block w-full text-left px-4 py-2.5 rounded-xl text-error hover:bg-red-50 font-medium transition-all"
           >
             Cerrar sesion
           </button>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,33 +6,53 @@
 
 @layer base {
   body {
-    @apply font-sans text-dark bg-gray-50;
+    @apply font-sans text-dark bg-white antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-lg font-medium
-           hover:bg-opacity-90 transition-all duration-300;
+    @apply bg-accent text-white px-7 py-3 rounded-full font-semibold
+           hover:bg-orange-600 transition-all duration-200 shadow-sm hover:shadow-md
+           active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-primary px-6 py-3 rounded-lg font-medium
-           hover:bg-opacity-90 transition-all duration-300;
+    @apply bg-primary text-white px-7 py-3 rounded-full font-semibold
+           hover:bg-opacity-90 transition-all duration-200 shadow-sm hover:shadow-md
+           active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-7 py-3 rounded-full font-semibold
+           hover:bg-primary hover:text-white transition-all duration-200
+           active:scale-95;
   }
 
   .product-card {
-    @apply bg-white rounded-xl shadow-md overflow-hidden
-           transition-all duration-300 ease-out;
+    @apply bg-white rounded-2xl shadow-card overflow-hidden
+           transition-all duration-300 ease-out border border-gray-100;
   }
 
   .product-card:hover {
-    @apply -translate-y-2 shadow-xl;
+    @apply -translate-y-1 shadow-card-hover;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg
-           focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent
-           transition-all duration-200;
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50
+           focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent focus:bg-white
+           transition-all duration-200 text-dark placeholder-gray-400;
+  }
+
+  .section-title {
+    @apply font-heading text-3xl font-bold text-primary;
+  }
+
+  .section-subtitle {
+    @apply text-muted mt-2;
   }
 }
