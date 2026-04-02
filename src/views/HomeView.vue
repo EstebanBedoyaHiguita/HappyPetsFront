@@ -237,15 +237,14 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div v-else-if="featuredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          <div
+        <div v-else-if="featuredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+          <ProductCard
             v-for="(product, i) in featuredProducts"
             :key="product._id"
-            class="reveal flex w-full"
+            :product="product"
+            class="reveal"
             :style="`transition-delay: ${i * 100}ms`"
-          >
-            <ProductCard :product="product" />
-          </div>
+          />
         </div>
 
         <div v-else class="text-center py-12 text-muted">
@@ -326,15 +325,14 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div v-else-if="bestSellers.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div
+        <div v-else-if="bestSellers.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+          <ProductCard
             v-for="(product, i) in bestSellers"
             :key="product._id"
-            class="reveal flex w-full"
+            :product="product"
+            class="reveal"
             :style="`transition-delay: ${i * 100}ms`"
-          >
-            <ProductCard :product="product" />
-          </div>
+          />
         </div>
 
         <div v-else class="text-center py-12 text-muted">

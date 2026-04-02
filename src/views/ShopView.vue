@@ -167,7 +167,7 @@ watch(() => route.query.category, (newCategory) => {
 
           <div
             v-else-if="filteredProducts.length > 0"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
           >
             <ProductCard
               v-for="product in filteredProducts"

@@ -20,6 +20,9 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         heading: ['Poppins', 'system-ui', 'sans-serif'],
       },
+      gridAutoRows: {
+        'fr': '1fr',
+      },
       boxShadow: {
         'card': '0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px 0 rgba(0,0,0,0.04)',
         'card-hover': '0 20px 40px -8px rgba(96,181,255,0.25), 0 8px 16px -4px rgba(0,0,0,0.06)',
