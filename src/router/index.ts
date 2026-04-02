@@ -43,6 +43,11 @@ const routes = [
     component: () => import('../views/CheckoutView.vue'),
   },
   {
+    path: '/pago-resultado',
+    name: 'payment-result',
+    component: () => import('../views/PaymentResultView.vue'),
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('../views/LoginView.vue'),
@@ -88,6 +93,11 @@ const routes = [
         path: 'pedidos',
         name: 'admin-orders',
         component: () => import('../views/admin/OrdersView.vue'),
+      },
+      {
+        path: 'transacciones',
+        name: 'admin-transactions',
+        component: () => import('../views/admin/TransactionsView.vue'),
       },
       {
         path: 'usuarios',

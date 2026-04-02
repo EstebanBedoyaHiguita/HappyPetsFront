@@ -97,3 +97,36 @@ export interface AuthResponse {
   user: User;
   access_token: string;
 }
+
+export interface Transaction {
+  reference_id: string;
+  transaction_id: string;
+  status: 'APPROVED' | 'REJECTED' | 'PROCESSING' | 'PENDING';
+  payment_method: 'CREDIT_CARD' | 'PSE' | 'BOTON_BANCOLOMBIA';
+  payer_name: string;
+  payer_email: string;
+  createdAt: string;
+}
+
+export interface PSEBank {
+  bank_code: string;
+  bank_name: string;
+}
+
+export interface PaymentIntentResponse {
+  reference_id: string;
+  status: string;
+}
+
+export interface PaymentAttemptResponse {
+  transaction_id: string;
+  status: 'APPROVED' | 'REJECTED' | 'PROCESSING' | 'PENDING';
+  next_actions?: {
+    redirect_url: string;
+    redirect_method: string;
+  };
+  amount?: {
+    currency: string;
+    total_amount: number;
+  };
+}

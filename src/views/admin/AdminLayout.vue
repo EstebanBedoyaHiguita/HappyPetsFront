@@ -12,6 +12,7 @@ const menuItems = [
   { name: 'Ciudades', to: '/admin/ciudades', icon: '🚚' },
   { name: 'Blog', to: '/admin/blog', icon: '📝' },
   { name: 'Pedidos', to: '/admin/pedidos', icon: '🛒' },
+  { name: 'Transacciones', to: '/admin/transacciones', icon: '💳' },
   { name: 'Usuarios', to: '/admin/usuarios', icon: '👥', adminOnly: true },
 ];
 
