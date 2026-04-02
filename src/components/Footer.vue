@@ -44,12 +44,12 @@ import { RouterLink } from 'vue-router';
             Navegacion
           </h3>
           <ul class="space-y-3">
-            <li v-for="link in [['Tienda', '/tienda'], ['Nosotros', '/nosotros'], ['Blog', '/blog'], ['Mi cuenta', '/perfil']]" :key="link[0]">
+            <li v-for="link in ([{ name: 'Tienda', to: '/tienda' }, { name: 'Nosotros', to: '/nosotros' }, { name: 'Blog', to: '/blog' }, { name: 'Mi cuenta', to: '/perfil' }] as const)" :key="link.to">
               <RouterLink
-                :to="link[1]"
+                :to="link.to"
                 class="text-white/50 hover:text-accent text-sm transition-colors"
               >
-                {{ link[0] }}
+                {{ link.name }}
               </RouterLink>
             </li>
           </ul>
