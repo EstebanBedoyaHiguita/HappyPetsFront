@@ -166,7 +166,6 @@ async function handleCheckout() {
         department: form.value.department,
         notes: form.value.notes,
       },
-      shipping: cartStore.shipping,
     };
 
     const response = await api.post('/orders', orderData);
