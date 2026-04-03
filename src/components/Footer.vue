@@ -44,7 +44,7 @@ import { RouterLink } from 'vue-router';
             Navegacion
           </h3>
           <ul class="space-y-3">
-            <li v-for="link in ([{ name: 'Tienda', to: '/tienda' }, { name: 'Nosotros', to: '/nosotros' }, { name: 'Blog', to: '/blog' }, { name: 'Mi cuenta', to: '/perfil' }] as const)" :key="link.to">
+pus            <li v-for="link in ([{ name: 'Tienda', to: '/tienda' }, { name: 'Nosotros', to: '/nosotros' }, { name: 'Blog', to: '/blog' }, { name: 'Mi cuenta', to: '/perfil' }] as const)" :key="link.to">
               <RouterLink
                 :to="link.to"
                 class="text-white/50 hover:text-accent text-sm transition-colors"

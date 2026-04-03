@@ -29,11 +29,11 @@ function addToCart() {
   <div class="product-card group flex flex-col h-full">
     <RouterLink :to="`/producto/${product._id}`" class="block flex-shrink-0">
       <!-- Image container -->
-      <div class="relative overflow-hidden aspect-square bg-gray-100">
+      <div class="relative overflow-hidden aspect-square bg-white p-4">
         <img
           :src="product.images[0] || '/placeholder-product.jpg'"
           :alt="product.name"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
         />
         <!-- Featured badge -->
         <span

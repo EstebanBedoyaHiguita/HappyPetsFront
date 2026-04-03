@@ -237,7 +237,7 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div v-else-if="featuredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+        <div v-else-if="featuredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2 pb-2">
           <ProductCard
             v-for="(product, i) in featuredProducts"
             :key="product._id"
