@@ -346,7 +346,7 @@ onUnmounted(() => {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between mb-12">
           <div class="reveal-left">
-            <h2 class="section-title">Del blog</h2>
+            <h2 class="section-title">Blog</h2>
             <p class="section-subtitle">Tips y novedades para tu mascota</p>
           </div>
           <RouterLink
