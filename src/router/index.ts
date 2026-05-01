@@ -43,6 +43,16 @@ const routes = [
     component: () => import('../views/CheckoutView.vue'),
   },
   {
+    path: '/politicas-de-privacidad',
+    name: 'privacy',
+    component: () => import('../views/PrivacyView.vue'),
+  },
+  {
+    path: '/terminos-y-condiciones',
+    name: 'terms',
+    component: () => import('../views/TermsView.vue'),
+  },
+  {
     path: '/pago-resultado',
     name: 'payment-result',
     component: () => import('../views/PaymentResultView.vue'),
