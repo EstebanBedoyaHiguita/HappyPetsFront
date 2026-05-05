@@ -51,20 +51,20 @@ onMounted(async () => {
   window.addEventListener('scroll', handleScroll, { passive: true });
 
   try {
-    const [featuredRes, bestSellersRes, categoriesRes, postsRes] = await Promise.all([
-      api.get<Product[]>('/products/featured?limit=20'),
+    const [allProductsRes, bestSellersRes, categoriesRes, postsRes] = await Promise.all([
+      api.get<Product[]>('/products'),
       api.get<Product[]>('/products/best-sellers?limit=4'),
       api.get<Category[]>('/categories?active=true'),
       api.get<Post[]>('/posts?limit=2&published=true'),
     ]);
-    const allFeatured = featuredRes.data;
-    for (let i = allFeatured.length - 1; i > 0; i--) {
+    const pool = allProductsRes.data.filter((p) => p.available);
+    for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      const tmp = allFeatured[i]!;
-      allFeatured[i] = allFeatured[j]!;
-      allFeatured[j] = tmp;
+      const tmp = pool[i]!;
+      pool[i] = pool[j]!;
+      pool[j] = tmp;
     }
-    featuredProducts.value = allFeatured.slice(0, 4);
+    featuredProducts.value = pool.slice(0, 4);
     bestSellers.value = bestSellersRes.data;
     categories.value = categoriesRes.data;
     latestPosts.value = postsRes.data;
