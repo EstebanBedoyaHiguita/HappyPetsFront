@@ -19,6 +19,13 @@ const statusLabels: Record<string, string> = {
   cancelled: 'Cancelado',
 };
 
+const statusOptions: Record<string, string> = {
+  pending:   'Pendiente',
+  shipped:   'Enviado',
+  delivered: 'Entregado',
+  cancelled: 'Cancelado',
+};
+
 const statusColors: Record<string, string> = {
   pending:   'bg-yellow-100 text-yellow-800',
   paid:      'bg-blue-100 text-blue-800',
@@ -93,7 +100,7 @@ async function updateStatus(order: Order, newStatus: string) {
       />
       <select v-model="filterStatus" class="input-field sm:w-48">
         <option value="">Todos los estados</option>
-        <option v-for="(label, key) in statusLabels" :key="key" :value="key">{{ label }}</option>
+        <option v-for="(label, key) in statusOptions" :key="key" :value="key">{{ label }}</option>
       </select>
     </div>
 
@@ -160,7 +167,7 @@ async function updateStatus(order: Order, newStatus: string) {
                   class="text-xs border border-gray-200 rounded-lg px-2 py-1 bg-white disabled:opacity-50"
                   @change="updateStatus(order, ($event.target as HTMLSelectElement).value)"
                 >
-                  <option v-for="(label, key) in statusLabels" :key="key" :value="key">{{ label }}</option>
+                  <option v-for="(label, key) in statusOptions" :key="key" :value="key">{{ label }}</option>
                 </select>
               </td>
             </tr>
