@@ -154,10 +154,10 @@ async function updateStatus(order: Order, newStatus: string) {
               <td class="px-4 py-3 text-center" @click.stop>
                 <input
                   type="checkbox"
-                  :checked="order.status === 'paid' || order.status === 'shipped' || order.status === 'delivered'"
+                  :checked="order.status === 'paid'"
                   :disabled="updatingId === order._id"
                   class="w-4 h-4 accent-primary cursor-pointer disabled:opacity-50"
-                  @change="updateStatus(order, order.status === 'paid' || order.status === 'shipped' || order.status === 'delivered' ? 'pending' : 'paid')"
+                  @change="updateStatus(order, order.status === 'paid' ? 'pending' : 'paid')"
                 />
               </td>
               <td class="px-4 py-3 text-center" @click.stop>
