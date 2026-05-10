@@ -121,6 +121,7 @@ async function updateStatus(order: Order, newStatus: string) {
               <th class="text-left px-4 py-3 font-semibold text-gray-600">Fecha</th>
               <th class="text-right px-4 py-3 font-semibold text-gray-600">Total</th>
               <th class="text-center px-4 py-3 font-semibold text-gray-600">Estado</th>
+              <th class="text-center px-4 py-3 font-semibold text-gray-600">Pagado</th>
               <th class="text-center px-4 py-3 font-semibold text-gray-600">Cambiar estado</th>
             </tr>
           </thead>
@@ -139,6 +140,15 @@ async function updateStatus(order: Order, newStatus: string) {
                 <span class="px-2 py-1 rounded-full text-xs font-medium" :class="statusColors[order.status]">
                   {{ statusLabels[order.status] }}
                 </span>
+              </td>
+              <td class="px-4 py-3 text-center" @click.stop>
+                <input
+                  type="checkbox"
+                  :checked="order.status === 'paid' || order.status === 'shipped' || order.status === 'delivered'"
+                  :disabled="updatingId === order._id"
+                  class="w-4 h-4 accent-primary cursor-pointer disabled:opacity-50"
+                  @change="updateStatus(order, order.status === 'paid' || order.status === 'shipped' || order.status === 'delivered' ? 'pending' : 'paid')"
+                />
               </td>
               <td class="px-4 py-3 text-center" @click.stop>
                 <select
