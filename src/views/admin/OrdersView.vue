@@ -59,13 +59,16 @@ onMounted(async () => {
 
 async function updateStatus(order: Order, newStatus: string) {
   updatingId.value = order._id;
+  error.value = '';
   try {
-    await api.patch(`/orders/${order._id}/status`, { status: newStatus });
+    await api.patch(`/orders/${order._id}`, { status: newStatus });
     order.status = newStatus as Order['status'];
     if (selectedOrder.value?._id === order._id) {
       selectedOrder.value.status = newStatus as Order['status'];
     }
-  } catch (err) {
+  } catch (err: unknown) {
+    const e = err as { response?: { status?: number; data?: { message?: string } } };
+    error.value = `Error al actualizar: ${e.response?.status} - ${e.response?.data?.message || 'Sin respuesta del servidor'}`;
     console.error('Error actualizando estado:', err);
   } finally {
     updatingId.value = '';
