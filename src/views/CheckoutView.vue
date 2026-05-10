@@ -158,22 +158,34 @@ async function loadBoldButton() {
     const params = res.data;
 
     await nextTick();
-
     if (!boldContainer.value) return;
+
+    // Limpiar scripts previos de Bold para evitar duplicados
     boldContainer.value.innerHTML = '';
+    document.getElementById('bold-lib')?.remove();
 
-    const script = document.createElement('script');
-    script.setAttribute('data-bold-button', '');
-    script.setAttribute('data-render-mode', 'embedded');
-    script.setAttribute('data-api-key', params.apiKey);
-    script.setAttribute('data-order-id', params.orderId);
-    script.setAttribute('data-amount', params.amount);
-    script.setAttribute('data-currency', params.currency);
-    script.setAttribute('data-integrity-signature', params.integritySignature);
-    script.setAttribute('data-description', params.description);
-    script.setAttribute('data-redirection-url', `${window.location.origin}/pago-resultado`);
+    // 1. Insertar el script de datos PRIMERO
+    const dataScript = document.createElement('script');
+    dataScript.setAttribute('data-bold-button', '');
+    dataScript.setAttribute('data-render-mode', 'embedded');
+    dataScript.setAttribute('data-api-key', params.apiKey);
+    dataScript.setAttribute('data-order-id', params.orderId);
+    dataScript.setAttribute('data-amount', params.amount);
+    dataScript.setAttribute('data-currency', params.currency);
+    dataScript.setAttribute('data-integrity-signature', params.integritySignature);
+    dataScript.setAttribute('data-description', params.description);
+    dataScript.setAttribute('data-redirection-url', `${window.location.origin}/pago-resultado`);
+    boldContainer.value.appendChild(dataScript);
 
-    boldContainer.value.appendChild(script);
+    // 2. Cargar la librería de Bold DESPUÉS: la encontrará y renderizará el botón
+    await new Promise<void>((resolve, reject) => {
+      const lib = document.createElement('script');
+      lib.id = 'bold-lib';
+      lib.src = 'https://checkout.bold.co/library/boldPaymentButton.js';
+      lib.onload = () => resolve();
+      lib.onerror = () => reject(new Error('No se pudo cargar Bold'));
+      document.body.appendChild(lib);
+    });
   } catch (err) {
     console.error('Error loading Bold checkout:', err);
     error.value = 'No se pudo cargar el botón de pago. Intenta de nuevo.';
