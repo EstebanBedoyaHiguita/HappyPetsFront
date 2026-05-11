@@ -16,7 +16,7 @@ import CartSidebar from './components/CartSidebar.vue';
 
     <!-- WhatsApp floating button -->
     <a
-      href="https://wa.me/+15556413576"
+      href="https://wa.me/573132968514"
       target="_blank"
       rel="noopener noreferrer"
       class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg bg-green-500 hover:bg-green-600 transition-colors duration-200"
